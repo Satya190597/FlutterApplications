@@ -1,0 +1,46 @@
+# Miscellaneous
+expense_planner/*.class
+expense_planner/*.log
+expense_planner/*.pyc
+expense_planner/*.swp
+expense_planner/.DS_Store
+expense_planner/.atom/
+expense_planner/.buildlog/
+expense_planner/.history
+expense_planner/.svn/
+
+# IntelliJ related
+expense_planner/*.iml
+expense_planner/*.ipr
+expense_planner/*.iws
+expense_planner/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+expense_planner/**/doc/api/
+expense_planner/**/ios/Flutter/.last_build_id
+expense_planner/.dart_tool/
+expense_planner/.flutter-plugins
+expense_planner/.flutter-plugins-dependencies
+expense_planner/.packages
+expense_planner/.pub-cache/
+expense_planner/.pub/
+expense_planner/build/
+
+# Web related
+expense_planner/lib/generated_plugin_registrant.dart
+
+# Symbolication related
+expense_planner/app.*.symbols
+
+# Obfuscation related
+expense_planner/app.*.map.json
+
+# Android Studio will place build artifacts here
+expense_planner/android/app/debug
+expense_planner/android/app/profile
+expense_planner/android/app/release
