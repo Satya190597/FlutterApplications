@@ -44,3 +44,51 @@ expense_planner/app.*.map.json
 expense_planner/android/app/debug
 expense_planner/android/app/profile
 expense_planner/android/app/release
+
+
+
+recipe_app/*.class
+recipe_app/*.log
+recipe_app/*.pyc
+recipe_app/*.swp
+recipe_app/.DS_Store
+recipe_app/.atom/
+recipe_app/.buildlog/
+recipe_app/.history
+recipe_app/.svn/
+
+# IntelliJ related
+recipe_app/*.iml
+recipe_app/*.ipr
+recipe_app/*.iws
+recipe_app/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+recipe_app/**/doc/api/
+recipe_app/**/ios/Flutter/.last_build_id
+recipe_app/.dart_tool/
+recipe_app/.flutter-plugins
+recipe_app/.flutter-plugins-dependencies
+recipe_app/.packages
+recipe_app/.pub-cache/
+recipe_app/.pub/
+recipe_app/build/
+
+# Web related
+recipe_app/lib/generated_plugin_registrant.dart
+
+# Symbolication related
+recipe_app/app.*.symbols
+
+# Obfuscation related
+recipe_app/app.*.map.json
+
+# Android Studio will place build artifacts here
+recipe_app/android/app/debug
+recipe_app/android/app/profile
+recipe_app/android/app/release
