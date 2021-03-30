@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import '../data/meals_data.dart';
 import '../widgets/meal_item.dart';
+import '../models/Meal.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static String routeName = '/category-meals';
+
+  final List<Meal> availableMeal;
+
+  CategoryMealsScreen(this.availableMeal);
+
   CategoryMealsScreenState createState() {
     return CategoryMealsScreenState();
   }
@@ -12,6 +17,7 @@ class CategoryMealsScreen extends StatefulWidget {
 class CategoryMealsScreenState extends State<CategoryMealsScreen> {
   Map<String, String> routeArgs;
   List meals;
+
 
   /**
    * initstate is called before the state loads its dependencies and for that reason no context is
@@ -25,6 +31,7 @@ class CategoryMealsScreenState extends State<CategoryMealsScreen> {
 
   @override
   void didChangeDependencies() {
+    List<Meal> DUMMY_MEALS = widget.availableMeal;
     print('DID CHANGE DEPENDENCIES CALLED');
     routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
