@@ -22,7 +22,45 @@ class RecipeApp extends StatefulWidget {
 class RecipeAppState extends State<RecipeApp>
 {
 
+  // List of meal.
   List<Meal> _availabelMeal = DUMMY_MEALS;
+
+  // List of favourite meal.
+  List<Meal> _favouriteMeal = [];
+
+  void favouriteToggleHandler(String id) {
+    print('Meal Id -> ${id}');
+
+    final indexOfMeal = _favouriteMeal.indexWhere((element) => element.id == id);
+
+    print('Index Of Meal ${indexOfMeal}');
+
+    if(indexOfMeal >= 0) {
+      setState(() {
+        _favouriteMeal.removeAt(indexOfMeal);
+      });
+
+    }
+    else {
+      setState(() {
+        _favouriteMeal.add(
+            _availabelMeal.firstWhere((element) => element.id == id));
+      });
+
+    }
+
+
+
+
+  }
+
+  // Check If The Meal Is In Favourite List.
+
+  bool isMealMarkedAdFavourite(String id) {
+    final index = _favouriteMeal.indexWhere((element) => element.id == id);
+
+    return index >=0 ? true : false;
+  }
 
   Map<String,bool> _filters = {
     'gluten': false,
@@ -68,10 +106,10 @@ class RecipeAppState extends State<RecipeApp>
           )
         )
       ),
-      home: TabScreen(),
+      home: TabScreen(_favouriteMeal),
       routes: {
         CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(this._availabelMeal),
-        MealDetailScreen.routeName: (context) => MealDetailScreen(),
+        MealDetailScreen.routeName: (context) => MealDetailScreen(this.favouriteToggleHandler,this.isMealMarkedAdFavourite),
         FilterScreen.route_name: (context) => FilterScreen(this.setFilters,this._filters)
       },
     );

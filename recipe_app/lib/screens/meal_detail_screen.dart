@@ -4,6 +4,11 @@ import '../data/meals_data.dart';
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
 
+  Function isMealMarkedAsFavourite;
+  Function toggleFavouriteHandler;
+
+  MealDetailScreen(this.toggleFavouriteHandler,this.isMealMarkedAsFavourite);
+
   // Builder method to build -  Section Title.
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
@@ -33,6 +38,8 @@ class MealDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final argId = ModalRoute.of(context).settings.arguments.toString();
+
+
 
     final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == argId);
 
@@ -113,9 +120,10 @@ class MealDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
+        child:  this.isMealMarkedAsFavourite(selectedMeal.id) ?  Icon(Icons.star) : Icon(Icons.star_border),
         onPressed: () {
-          Navigator.of(context).pop(selectedMeal.id);
+          // -- Example for backward navigation - Navigator.of(context).pop(selectedMeal.id);
+          this.toggleFavouriteHandler(selectedMeal.id);
         },
       ),
     );
