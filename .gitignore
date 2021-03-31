@@ -92,3 +92,51 @@ recipe_app/app.*.map.json
 recipe_app/android/app/debug
 recipe_app/android/app/profile
 recipe_app/android/app/release
+
+
+
+shop_app/*.class
+shop_app/*.log
+shop_app/*.pyc
+shop_app/*.swp
+shop_app/.DS_Store
+shop_app/.atom/
+shop_app/.buildlog/
+shop_app/.history
+shop_app/.svn/
+
+# IntelliJ related
+shop_app/*.iml
+shop_app/*.ipr
+shop_app/*.iws
+shop_app/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+shop_app/**/doc/api/
+shop_app/**/ios/Flutter/.last_build_id
+shop_app/.dart_tool/
+shop_app/.flutter-plugins
+shop_app/.flutter-plugins-dependencies
+shop_app/.packages
+shop_app/.pub-cache/
+shop_app/.pub/
+shop_app/build/
+
+# Web related
+shop_app/lib/generated_plugin_registrant.dart
+
+# Symbolication related
+shop_app/app.*.symbols
+
+# Obfuscation related
+shop_app/app.*.map.json
+
+# Android Studio will place build artifacts here
+shop_app/android/app/debug
+shop_app/android/app/profile
+shop_app/android/app/release
