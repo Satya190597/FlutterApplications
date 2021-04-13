@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../provider/product.dart';
 
 // Product Model.
 import '../models/product.dart';
@@ -9,20 +10,24 @@ import '../data/ProductData.dart';
 // Widgets.
 import '../widgets/product_item.dart';
 
+import 'package:provider/provider.dart';
+
 
 
 class ProductsOverviewScreen extends StatelessWidget {
 
 
 
-  final List<Product> productList = DUMMY_PRODUCT_DATA;
+  //List<Product> productList = [];
 
 
 
   @override
   Widget build(BuildContext context) {
 
+    final productData = Provider.of<ProductProvider>(context);
 
+    final List<Product> productList = productData.items;
 
     return Scaffold(
       appBar: AppBar(
