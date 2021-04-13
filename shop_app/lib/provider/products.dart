@@ -5,10 +5,15 @@ import './product.dart';
 class ProductProvider with ChangeNotifier {
   List<Product> _productList = DUMMY_PRODUCT_DATA;
   var showFavoritesOnly = false;
-  get items {
-    if(showFavoritesOnly) {
+
+  get favItems {
+
       return [...this._productList.where((element) => element.isFavorite)];
-    }
+
+  }
+
+  get items {
+
     return [...this._productList];
   }
 
