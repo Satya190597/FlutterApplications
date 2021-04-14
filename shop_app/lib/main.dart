@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Widget.
 import './screens/products_overview_screen.dart';
 import './screens/product_detail_screen.dart';
+import './screens/cart_screen.dart';
 
 import './provider/products.dart';
 import './provider/cart.dart';
@@ -29,7 +30,8 @@ class ShoppingApp extends StatelessWidget {
         home: ProductsOverviewScreen(),
         routes: <String, WidgetBuilder>{
           ProductDetailScreen.routeName: (BuildContext context) =>
-              ProductDetailScreen()
+              ProductDetailScreen(),
+          CartScreen.routeName: (BuildContext context) => CartScreen(),
         },
       ),
     );

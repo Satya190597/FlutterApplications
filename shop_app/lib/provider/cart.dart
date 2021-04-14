@@ -28,6 +28,16 @@ class Cart with ChangeNotifier {
     return _item.length;
   }
 
+  // Getter - get total amount.
+  get totalAmount {
+    double totalAmount = 0;
+    _item.forEach((key, value) {
+      totalAmount += value.price * value.quantity;
+    });
+    return totalAmount.round();
+  }
+
+
   // Add cart item to cart.
   void addItem(String key, String title, double price, int quantity) {
     if (_item.containsKey(key)) {

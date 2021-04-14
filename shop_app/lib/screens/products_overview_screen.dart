@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 // - widgets.
 import '../widgets/products_grid.dart';
 import '../widgets/badge.dart';
+import '../screens/cart_screen.dart';
 
 // - providers.
 import '../provider/cart.dart';
@@ -34,7 +35,9 @@ class ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           Badge(
             child: IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
             ),
             value: cartProvider.itemsCount.toString(),
           ),
