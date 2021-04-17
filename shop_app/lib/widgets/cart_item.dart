@@ -1,16 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/cart.dart';
 
 class CartItem extends StatelessWidget {
+  final String productId;
   final String id;
   final double price;
   final String title;
   final int quantity;
 
-  CartItem(this.id, this.price, this.title, this.quantity);
+  CartItem(this.productId,this.id, this.price, this.title, this.quantity);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+
+    final cartProvider = Provider.of<Cart>(context,listen: false);
+
+    return Dismissible(
+      key: ValueKey(this.id),
+      background: Container(
+        color: Colors.red,
+        child: Icon(
+          Icons.delete,
+          color: Colors.white,
+          size: 40,
+        ),
+        alignment: Alignment.centerRight,
+        padding: EdgeInsets.only(right: 20),
+        margin: EdgeInsets.symmetric(
+          horizontal: 15,
+          vertical: 4,
+        ),
+      ),
+      direction: DismissDirection.endToStart,
+      // Function gets trigger when dismissed events occurs.
+      onDismissed: (direction) {
+        cartProvider.removeItem(productId);
+      },
+      child: Card(
         margin: EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 4,
@@ -29,6 +57,8 @@ class CartItem extends StatelessWidget {
               title: Text(this.title),
               subtitle: Text('Total \$${(this.price * this.quantity)}'),
               trailing: Text('$quantity x')),
-        ));
+        ),
+      ),
+    );
   }
 }
