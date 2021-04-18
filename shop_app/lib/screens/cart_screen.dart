@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 // - Providers.
 import '../provider/cart.dart';
+import '../provider/orders.dart';
 
 // - Widgets
 import '../widgets/cart_item.dart' as CartItemWidget;
@@ -14,8 +15,11 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<Cart>(context);
+    final order = Provider.of<Orders>(context,listen: false);
+    
     final List<CartItem> cartItemValues = cartProvider.items.values.toList();
     final List<String> cartItemsKeys = cartProvider.items.keys.toList();
+
 
     return Scaffold(
       appBar: AppBar(
@@ -46,7 +50,10 @@ class CartScreen extends StatelessWidget {
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      order.addOrder(cartItemValues, cartProvider.totalAmount * 1.0);
+                      cartProvider.clearCart();
+                    },
                     child: Text('ORDER NOW'),
                   ),
                 ],
