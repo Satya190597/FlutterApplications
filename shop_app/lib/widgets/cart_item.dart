@@ -10,12 +10,11 @@ class CartItem extends StatelessWidget {
   final String title;
   final int quantity;
 
-  CartItem(this.productId,this.id, this.price, this.title, this.quantity);
+  CartItem(this.productId, this.id, this.price, this.title, this.quantity);
 
   @override
   Widget build(BuildContext context) {
-
-    final cartProvider = Provider.of<Cart>(context,listen: false);
+    final cartProvider = Provider.of<Cart>(context, listen: false);
 
     return Dismissible(
       key: ValueKey(this.id),
@@ -37,6 +36,24 @@ class CartItem extends StatelessWidget {
       // Function gets trigger when dismissed events occurs.
       onDismissed: (direction) {
         cartProvider.removeItem(productId);
+      },
+      confirmDismiss: (direction) {
+        return showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: Text('Are You Sure?'),
+            content: Text('Do you want to remove the item from the cart?'),
+            actions: [
+              TextButton(onPressed: () {
+                Navigator.of(ctx).pop(false);
+              }, child: Text('No')),
+              TextButton(onPressed: () {
+                Navigator.of(ctx).pop(true);
+              }, child: Text('Yes')),
+            ],
+          ),
+        );
+        return Future.value(true);
       },
       child: Card(
         margin: EdgeInsets.symmetric(

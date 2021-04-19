@@ -37,7 +37,6 @@ class Cart with ChangeNotifier {
     return totalAmount.round();
   }
 
-
   // Add cart item to cart.
   void addItem(String key, String title, double price, int quantity) {
     if (_item.containsKey(key)) {
@@ -78,6 +77,26 @@ class Cart with ChangeNotifier {
   // Clear Cart
   void clearCart() {
     _item = {};
+    notifyListeners();
+  }
+
+  // Remove A Single Item.
+  void removeSingleItem(String productId) {
+    if (!_item.containsKey(productId)) {
+      return;
+    }
+    if (_item[productId].quantity > 1) {
+      _item.update(
+          productId,
+          (value) => CartItem(
+              id: value.id,
+              title: value.title,
+              price: value.price,
+              quantity: value.quantity - 1));
+    }
+    else {
+      _item.remove(productId);
+    }
     notifyListeners();
   }
 }
