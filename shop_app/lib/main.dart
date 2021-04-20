@@ -5,10 +5,14 @@ import './screens/products_overview_screen.dart';
 import './screens/product_detail_screen.dart';
 import './screens/cart_screen.dart';
 import './screens/orders_screen.dart';
+import './screens/user_products_screen.dart';
 
 import './provider/products.dart';
 import './provider/cart.dart';
 import './provider/orders.dart';
+
+
+
 import 'package:provider/provider.dart';
 
 
@@ -37,6 +41,7 @@ class ShoppingApp extends StatelessWidget {
               ProductDetailScreen(),
           CartScreen.routeName: (BuildContext context) => CartScreen(),
           OrdersScreen.routeName: (BuildContext context) => OrdersScreen(),
+          UserProductsScreen.routeName: (BuildContext context) => UserProductsScreen(),
         },
       ),
     );
