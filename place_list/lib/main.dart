@@ -5,9 +5,15 @@ import 'package:provider/provider.dart';
 
 // + Screens.
 import 'screens/places_list_screen.dart';
+import 'screens/add_place_screen.dart';
 
 // + Providers.
 import 'providers/great_places.dart';
+
+// Main method - App start execute from main.
+void main() {
+  runApp(PlaceList());
+}
 
 class PlaceList extends StatelessWidget {
   @override
@@ -18,7 +24,10 @@ class PlaceList extends StatelessWidget {
         title: 'Great Places',
         theme:
             ThemeData(primarySwatch: Colors.indigo, accentColor: Colors.amber),
-        home: PlaceList(),
+        home: PlacesListScreen(),
+        routes: {
+          AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+        },
       ),
     );
   }
