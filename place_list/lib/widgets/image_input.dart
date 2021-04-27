@@ -7,6 +7,10 @@ import 'dart:io';
 // + Image picker package.
 import 'package:image_picker/image_picker.dart';
 
+// + Path builder packages.
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as system_path;
+
 class ImageInput extends StatefulWidget {
   @override
   _ImageInputState createState() {
@@ -17,10 +21,21 @@ class ImageInput extends StatefulWidget {
 class _ImageInputState extends State<ImageInput> {
   File _storedImage;
 
-   final imagePicker = ImagePicker();
+  final imagePicker = ImagePicker();
 
+  // Image picker function.
   Future<void> _takePicture() async {
     final imageFile = await imagePicker.getImage(source: ImageSource.camera,maxWidth: 600);
+
+    setState(() {
+
+      _storedImage = File(imageFile.path);
+    });
+
+    final appDir = await system_path.getApplicationDocumentsDirectory();
+    final fileName = path.basename(_storedImage.path);
+    final savedIamge = await _storedImage.copy('${appDir.path}/${fileName}');
+
   }
 
   @override
